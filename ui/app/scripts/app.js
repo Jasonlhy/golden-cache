@@ -136,7 +136,7 @@ app.factory("TagService", function($resource) {
     // - http://youtu.be/[ID]
     // - http://www.youtube.com/watch?v=[ID]
     ,parseYoutube : function(content){
-    	var youtubeRegex = /\[url\](http|https):\/\/(youtu\.be\/|www\.youtube\.com\/watch\?v=)(\w+)\[\/url\]/g;
+    	var youtubeRegex = /\[url\](http|https):\/\/(youtu\.be\/|www\.youtube\.com\/watch\?v=)([a-zA-Z0-9_-]+)\[\/url\]/g;
     	return content.replace(youtubeRegex, function(match, httpProtocol, domain, id) {
           return '<iframe id="ytplayer" type="text/html" class="youtubePreview" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe><br>' + '<a href="https://' + domain + id + '">https://' + domain + id + '</a>';
       });
